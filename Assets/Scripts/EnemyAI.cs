@@ -18,10 +18,13 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
+
+        //adicionando o inimigo no array de inimigos no mapa para definir qual inimigo será alvo do player
+        EnemyManager.allEnemies.Add(this);
     }
     void Update()
     {
-        if(target !=null)
+        if (target != null)
         {
             Vector2 direction = target.position - transform.position;
             //a magnitude do vetor direction será maior quanto mais longe estiver do player, fazendo ele se mover mais rapido  quando longe e mais lento quando perto, para evitar isso, basta normalizar o valor
@@ -34,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     {
         rb.linearVelocity = normalizedDirection * moveSpeed;
     }
-    
+
     private void UpdateAnimator()
     {
         animator.SetFloat("Speed", normalizedDirection.magnitude);
@@ -42,12 +45,18 @@ public class EnemyAI : MonoBehaviour
     }
     private void FlipSprite()
     {
-        if(normalizedDirection.x < 0)
+        if (normalizedDirection.x < 0)
         {
             spriteRenderer.flipX = true;
-        }else if(normalizedDirection.x >0)
-        {
-            spriteRenderer.flipX=false;
         }
+        else if (normalizedDirection.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+    //a função OnDestroy é chamada em todos os scripts de objetos quando são destruidos, como o script enemyHealth destroi o inimigo qnd a vida chega a zero, o script EnemyAI dele vai chamar a função OnDestroy abaixo, que vai tirar ele do array de inimigos no mapa
+    void OnDestroy()
+    {
+        EnemyManager.allEnemies.Remove(this);
     }
 }

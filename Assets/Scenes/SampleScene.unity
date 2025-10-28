@@ -130,9 +130,10 @@ GameObject:
   - component: {fileID: 506964551}
   - component: {fileID: 506964550}
   - component: {fileID: 506964549}
-  - component: {fileID: 506964552}
   - component: {fileID: 506964554}
   - component: {fileID: 506964553}
+  - component: {fileID: 506964552}
+  - component: {fileID: 506964555}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,7 +206,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 778136270091268006, guid: 5f08a668082eacf41bd3190beadefaab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -318,6 +319,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &506964555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506964548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a5be7a7cacd1247872936bc84a0b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6997135496022675134}
+  isShooting: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +714,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2831,6 +2846,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70da29eca807714985e4cff11135bdd, type: 3}
+--- !u!1001 &6997135496022675133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.85667443
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506543453554030031, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134209894084004608, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_Name
+      value: Fireball-Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545085373048602553, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+--- !u!1 &6997135496022675134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4134209894084004608, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
+  m_PrefabInstance: {fileID: 6997135496022675133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2840,3 +2921,4 @@ SceneRoots:
   - {fileID: 506964551}
   - {fileID: 529885842}
   - {fileID: 1773206652656457726}
+  - {fileID: 6997135496022675133}
