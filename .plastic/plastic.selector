@@ -1,0 +1,4 @@
+repository "PROJETO IMPLEMENTACAO DE JOGOS 2D/PROJETO IMPLEMENTACAO DE JOGOS 2D@4673689228451@cloud"
+  path "/"
+    br "/main"
+    co "/main"
