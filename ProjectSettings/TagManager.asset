@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - MapBoundary
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - Water
   - UI
   - Projectile
-  - 
-  - 
-  - 
+  - MapBoundary
+  - Player
+  - Enemy
   - 
   - 
   - 

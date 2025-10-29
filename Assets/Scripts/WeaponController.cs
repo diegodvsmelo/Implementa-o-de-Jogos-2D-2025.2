@@ -33,7 +33,7 @@ public class WeaponController : MonoBehaviour
                 }
             }
             
-            if(closestEnemy != null)
+            if(closestEnemy != null && closestDistance<8f)
             {
                 GameObject newProjectile = Instantiate(projectile, transform.position, quaternion.identity);
 
