@@ -23,6 +23,15 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(enemyPrefab, spawnPosition, quaternion.identity);
             yield return new WaitForSeconds(coolDownSpawn);
         }
+
+    }
+    void OnDrawGizmos()
+    {
+        if (playerTransform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(playerTransform.position, spawnDistance);
+        }
         
     }
 }

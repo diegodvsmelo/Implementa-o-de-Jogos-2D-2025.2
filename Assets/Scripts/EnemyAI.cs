@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
 
         //adicionando o inimigo no array de inimigos no mapa para definir qual inimigo será alvo do player
         EnemyManager.allEnemies.Add(this);
+        Debug.Log(EnemyManager.allEnemies.Count);
     }
     void Update()
     {
@@ -35,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = normalizedDirection * moveSpeed;
+        rb.linearVelocity = normalizedDirection * moveSpeed * Time.deltaTime;
     }
 
     private void UpdateAnimator()
