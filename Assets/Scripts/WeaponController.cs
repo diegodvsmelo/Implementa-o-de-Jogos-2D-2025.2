@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private bool isShooting = true;
+    public float coolDownShoot;
     public Vector2 directionNormalized;
     void Start()
     {
@@ -42,7 +43,7 @@ public class WeaponController : MonoBehaviour
                 
                 newProjectile.GetComponent<ProjectileMovement>().Setup(directionNormalized);
             }
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(coolDownShoot);
         }
     }
 }

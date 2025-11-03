@@ -1,5 +1,7 @@
 using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,38 +11,70 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private InputActions controls;
     private SpriteRenderer spriteRenderer;
+    private Vector2 targetPosition;
+    private Vector2 normalizedDirection;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Awake sempre para inicialização de variaveis proprias
     void Awake()
     {
         controls = new InputActions();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        targetPosition = transform.position;
     }
 
     //onEnable e onDisable servem para evitar bugs, otimização e organização do código, evitando inputs indesejados 
     private void OnEnable()
     {
         controls.PlayerControls.Enable();
+        controls.PlayerControls.Walk.performed += HandleWalkClick;
     }
     private void OnDisable()
     {
         controls.PlayerControls.Disable();
+        controls.PlayerControls.Walk.performed -= HandleWalkClick;
     }
+
+    private void HandleWalkClick(InputAction.CallbackContext context)
+    {
+        Vector2 screenPosition = Input.mousePosition;
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+        RaycastHit2D hitInfo = Physics2D.Raycast(worldPosition, Vector2.zero);
+
+        if(hitInfo.collider !=null)
+        {
+            targetPosition = hitInfo.point;
+            Debug.Log("Novo destino definido: " + targetPosition);
+        }
+    }
+
     void Update()
     {
         moveInput = controls.PlayerControls.Move.ReadValue<Vector2>();
+
+        if (Vector2.Distance(targetPosition, (Vector2)transform.position) >0.5)
+        {
+            Vector2 direction = targetPosition - (Vector2)transform.position;
+            
+            normalizedDirection = direction.normalized;
+        }
+        else
+        {
+            normalizedDirection = Vector2.zero;
+        }
+
         UpdateAnimator();
         FlipSprite();
     }
 
     private void FlipSprite()
     {
-        if(moveInput.x < 0)
+        if(normalizedDirection.x < 0)
         {
             spriteRenderer.flipX = true;
-        }else if(moveInput.x >0)
+        }else if(normalizedDirection.x >0)
         {
             spriteRenderer.flipX=false;
         }
@@ -48,12 +82,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        animator.SetFloat("Speed", moveInput.magnitude);
+        animator.SetFloat("Speed", normalizedDirection.magnitude);
         //altera a variavel speed dentro do animator com base na magnitude do moveinput, caso o player gere qualquer movimentação no personagem, a magnitude será maior que zero, e dentro do animator, a animação de andar precisa apenas q speed seja maior q 0.1
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * speed*Time.deltaTime, moveInput.y * speed*Time.deltaTime);
+        rb.linearVelocity = normalizedDirection * speed;
+        //rb.linearVelocity = new Vector2(moveInput.x * speed * Time.deltaTime, moveInput.y * speed * Time.deltaTime);
     }
+
 }

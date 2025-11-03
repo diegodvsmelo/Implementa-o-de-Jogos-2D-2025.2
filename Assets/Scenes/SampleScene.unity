@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da3b7248bb6bc249ab83d865b232fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 270
+  speed: 7
 --- !u!61 &506964553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 4134209894084004608, guid: 3f344e66f2f87a24f9595b7683704454, type: 3}
   isShooting: 1
+  coolDownShoot: 0.8
   directionNormalized: {x: 0, y: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1051,7 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8837945472609669241, guid: f70da29eca807714985e4cff11135bdd, type: 3}
-  coolDownSpawn: 1
+  coolDownSpawn: 5
   spawnDistance: 12
 --- !u!4 &1446545366
 Transform:
@@ -1081,7 +1082,7 @@ GameObject:
   - component: {fileID: 1615503571}
   - component: {fileID: 1615503570}
   - component: {fileID: 1615503573}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1110,7 +1111,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615503568}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
