@@ -93,18 +93,45 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""0ef297f0-ce80-4dc9-b9c8-f6e7020e25fb"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""98c3b17d-5ca3-4269-83cf-e9b95f522cf1"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Walk"",
                     ""type"": ""Button"",
                     ""id"": ""41eaf71d-f24a-4afc-9036-e41e6cdca0c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""54f745fa-b8c3-4d67-996b-ccc3f5193a93"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Water"",
+                    ""type"": ""Button"",
+                    ""id"": ""a365185a-9d82-445a-8177-a19abb85a1b8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Air"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbc246f7-1f8b-4021-97c1-7650cf891407"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Earth"",
+                    ""type"": ""Button"",
+                    ""id"": ""734a93dd-82d9-4485-aa5b-32f6815c67eb"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -113,116 +140,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""ecf0734a-0d6c-4f23-a67d-f744062b60aa"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""eb865fa1-d3f3-4add-8bd6-ba4462f91546"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";MouseKeyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""529023b1-62a9-4d52-8af9-d96dcb71da02"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";MouseKeyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1add540d-a3a0-4a8c-94b4-2ce824595917"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";MouseKeyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""fafd105c-f876-4dd5-9dc2-857605b0cc23"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";MouseKeyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""6d804125-e2b4-4559-8fc5-32c8ee3b4dba"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f0789e7e-5c18-416b-8f14-f1121034df3d"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""f94158aa-f0ac-4470-8d3d-d18494667e9d"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f78784ec-d2da-4249-af52-a1bf16ddb4ef"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""5b752084-8535-4ca7-a0dd-3b16874ed73a"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""4714eba9-f4a8-4dd3-a085-27d91b794dad"",
                     ""path"": ""<Mouse>/rightButton"",
@@ -230,6 +147,50 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";MouseKeyboard"",
                     ""action"": ""Walk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e556aeb2-2f13-436c-9033-b8ea99ab0f26"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69381db0-b932-4041-82e2-004cb0934a58"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Water"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""591421c9-5cf0-49c7-861c-272845b2f255"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Air"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d935607f-45eb-48d2-9fb8-ae72f3643e1b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Earth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -252,13 +213,27 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<DualShockGamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
-        m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls_Walk = m_PlayerControls.FindAction("Walk", throwIfNotFound: true);
+        m_PlayerControls_Fire = m_PlayerControls.FindAction("Fire", throwIfNotFound: true);
+        m_PlayerControls_Water = m_PlayerControls.FindAction("Water", throwIfNotFound: true);
+        m_PlayerControls_Air = m_PlayerControls.FindAction("Air", throwIfNotFound: true);
+        m_PlayerControls_Earth = m_PlayerControls.FindAction("Earth", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -339,8 +314,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // PlayerControls
     private readonly InputActionMap m_PlayerControls;
     private List<IPlayerControlsActions> m_PlayerControlsActionsCallbackInterfaces = new List<IPlayerControlsActions>();
-    private readonly InputAction m_PlayerControls_Move;
     private readonly InputAction m_PlayerControls_Walk;
+    private readonly InputAction m_PlayerControls_Fire;
+    private readonly InputAction m_PlayerControls_Water;
+    private readonly InputAction m_PlayerControls_Air;
+    private readonly InputAction m_PlayerControls_Earth;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControls".
     /// </summary>
@@ -353,13 +331,25 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public PlayerControlsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PlayerControls/Move".
-        /// </summary>
-        public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
-        /// <summary>
         /// Provides access to the underlying input action "PlayerControls/Walk".
         /// </summary>
         public InputAction @Walk => m_Wrapper.m_PlayerControls_Walk;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/Fire".
+        /// </summary>
+        public InputAction @Fire => m_Wrapper.m_PlayerControls_Fire;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/Water".
+        /// </summary>
+        public InputAction @Water => m_Wrapper.m_PlayerControls_Water;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/Air".
+        /// </summary>
+        public InputAction @Air => m_Wrapper.m_PlayerControls_Air;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControls/Earth".
+        /// </summary>
+        public InputAction @Earth => m_Wrapper.m_PlayerControls_Earth;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -386,12 +376,21 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerControlsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerControlsActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
             @Walk.started += instance.OnWalk;
             @Walk.performed += instance.OnWalk;
             @Walk.canceled += instance.OnWalk;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
+            @Water.started += instance.OnWater;
+            @Water.performed += instance.OnWater;
+            @Water.canceled += instance.OnWater;
+            @Air.started += instance.OnAir;
+            @Air.performed += instance.OnAir;
+            @Air.canceled += instance.OnAir;
+            @Earth.started += instance.OnEarth;
+            @Earth.performed += instance.OnEarth;
+            @Earth.canceled += instance.OnEarth;
         }
 
         /// <summary>
@@ -403,12 +402,21 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="PlayerControlsActions" />
         private void UnregisterCallbacks(IPlayerControlsActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
             @Walk.started -= instance.OnWalk;
             @Walk.performed -= instance.OnWalk;
             @Walk.canceled -= instance.OnWalk;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
+            @Water.started -= instance.OnWater;
+            @Water.performed -= instance.OnWater;
+            @Water.canceled -= instance.OnWater;
+            @Air.started -= instance.OnAir;
+            @Air.performed -= instance.OnAir;
+            @Air.canceled -= instance.OnAir;
+            @Earth.started -= instance.OnEarth;
+            @Earth.performed -= instance.OnEarth;
+            @Earth.canceled -= instance.OnEarth;
         }
 
         /// <summary>
@@ -455,6 +463,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_MouseKeyboardSchemeIndex];
         }
     }
+    private int m_ControllerSchemeIndex = -1;
+    /// <summary>
+    /// Provides access to the input control scheme.
+    /// </summary>
+    /// <seealso cref="UnityEngine.InputSystem.InputControlScheme" />
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerControls" which allows adding and removing callbacks.
     /// </summary>
@@ -463,18 +484,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerControlsActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMove(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Walk" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWalk(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Water" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWater(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Air" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAir(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Earth" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEarth(InputAction.CallbackContext context);
     }
 }

@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         {
             targetPosition = hitInfo.point;
             activeMarkerCoroutine = StartCoroutine(ShowMarker());
-            Debug.Log("Novo destino definido: " + targetPosition);
         }
     }
     
@@ -73,7 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveInput = controls.PlayerControls.Move.ReadValue<Vector2>();
+        //deixar codigo inativo para possivel adaptação para controle futuramente
+        //moveInput = controls.PlayerControls.Move.ReadValue<Vector2>();
 
         if (Vector2.Distance(targetPosition, (Vector2)transform.position) >0.2)
         {
