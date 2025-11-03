@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,8 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private InputActions controls;
     private SpriteRenderer spriteRenderer;
+
     private Vector2 targetPosition;
     private Vector2 normalizedDirection;
+
+    public GameObject targetMarker;
+    private Coroutine activeMarkerCoroutine;
+    [SerializeField] private float markerStopDistance;
+
 
     // Awake sempre para inicialização de variaveis proprias
     void Awake()
@@ -25,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         targetPosition = transform.position;
     }
 
-    //onEnable e onDisable servem para evitar bugs, otimização e organização do código, evitando inputs indesejados 
     private void OnEnable()
     {
         controls.PlayerControls.Enable();
@@ -43,18 +50,32 @@ public class PlayerMovement : MonoBehaviour
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         RaycastHit2D hitInfo = Physics2D.Raycast(worldPosition, Vector2.zero);
 
-        if(hitInfo.collider !=null)
+        if (hitInfo.collider != null)
         {
             targetPosition = hitInfo.point;
+            activeMarkerCoroutine = StartCoroutine(ShowMarker());
             Debug.Log("Novo destino definido: " + targetPosition);
         }
+    }
+    
+    IEnumerator ShowMarker()
+    {
+        targetMarker.transform.position = targetPosition;
+        targetMarker.gameObject.SetActive(true);
+
+        while(Vector2.Distance(transform.position, targetMarker.transform.position) >0.3)
+        {
+            yield return null;
+        }
+        targetMarker.gameObject.SetActive(false);
+        activeMarkerCoroutine = null;
     }
 
     void Update()
     {
         moveInput = controls.PlayerControls.Move.ReadValue<Vector2>();
 
-        if (Vector2.Distance(targetPosition, (Vector2)transform.position) >0.5)
+        if (Vector2.Distance(targetPosition, (Vector2)transform.position) >0.2)
         {
             Vector2 direction = targetPosition - (Vector2)transform.position;
             
