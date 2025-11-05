@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

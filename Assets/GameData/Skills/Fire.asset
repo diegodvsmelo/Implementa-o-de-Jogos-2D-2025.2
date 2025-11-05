@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb535bc74d69bd4e8c7a1f4fda1055a, type: 3}
-  m_Name: FireFire
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: 104504fa9767fe143be3e859fb89a53d, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
   key1: Fire
-  key2: Fire
-  comboEffectPrefab: {fileID: 4885838919725984710, guid: b87e1c739fda303498200a7e72f87254, type: 3}
-  coolDown: 2
+  comboEffectPrefab: {fileID: 4885838919725984710, guid: 56e348bf4b3be944fa5c8a80257bbc44, type: 3}
+  coolDown: 5

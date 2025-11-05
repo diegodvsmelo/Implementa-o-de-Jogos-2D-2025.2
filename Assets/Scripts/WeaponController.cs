@@ -36,7 +36,7 @@ public class WeaponController : MonoBehaviour
             
             if(closestEnemy != null && closestDistance<8f)
             {
-                GameObject newProjectile = Instantiate(projectile, transform.position, quaternion.identity);
+                GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
 
                 Vector2 direction = closestEnemy.transform.position - transform.position;
                 directionNormalized = direction.normalized;

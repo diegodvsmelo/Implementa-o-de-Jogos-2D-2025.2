@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
             Vector2 spawnPosition = (Vector2)playerTransform.position + (randomDirection * spawnDistance);
-            Instantiate(enemyPrefab, spawnPosition, quaternion.identity);
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(coolDownSpawn);
         }
 

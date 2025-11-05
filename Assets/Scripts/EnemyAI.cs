@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = normalizedDirection * moveSpeed * Time.deltaTime;
+        rb.linearVelocity = normalizedDirection * moveSpeed;
     }
 
     private void UpdateAnimator()
