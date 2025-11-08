@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   key1: Fire
   comboEffectPrefab: {fileID: 4885838919725984710, guid: 56e348bf4b3be944fa5c8a80257bbc44, type: 3}
-  coolDown: 5
+  coolDown: 3

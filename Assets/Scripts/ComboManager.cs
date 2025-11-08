@@ -15,12 +15,12 @@ public class ComboManager : MonoBehaviour
 
     public List<ComboData> comboRecipes;
     public List<SkillData> skillRecipes;
-    public Dictionary<string, float> cooldownTracker;
+    private Dictionary<string, float> cooldownTracker;
     private List<ComboInput> inputBuffer;
     public float comboWindow = 300f;
     private Coroutine clearBuffer;
 
-    private struct ComboInput
+    public struct ComboInput
     {
         public string key;
         public float time;
@@ -47,24 +47,28 @@ public class ComboManager : MonoBehaviour
         controls.PlayerControls.Air.performed -= AirHandler;
         controls.PlayerControls.Earth.performed -= EarthHandler;
     }
+    //----------GETTERS----------
+    public List<ComboInput> CurrentInputBuffer
+    {
+        get { return inputBuffer; }
+    }
+    public Dictionary<string, float> CooldownTracker
+    {
+        get { return cooldownTracker; }
+    }
+    public string LastUsedComboName { get; private set; } = "";
+
+
     private void FireHandler(InputAction.CallbackContext context)
     {
         ComboInput input = new ComboInput { key = "Fire", time = Time.time };
         SkillData fireSkill = FindSkill("Fire");
 
-        //Verificações de Falha
         if (fireSkill == null)
         {
-            Debug.Log("Skill Fire não encontrada.");
             return;
         }
 
-        if (IsOnCoolDown("Fire", fireSkill.coolDown))
-        {
-            Debug.Log("Fire ainda em cooldown.");
-        }
-
-        //Logica principal
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
             if (clearBuffer != null)
@@ -95,19 +99,12 @@ public class ComboManager : MonoBehaviour
         ComboInput input = new ComboInput { key = "Water", time = Time.time };
         SkillData waterSkill = FindSkill("Water");
 
-        //Verificações de Falha
+
         if (waterSkill == null)
         {
-            Debug.Log("Skill Fire não encontrada.");
             return;
         }
 
-        if (IsOnCoolDown("Fire", waterSkill.coolDown))
-        {
-            Debug.Log("Fire ainda em cooldown.");
-        }
-
-        //Logica principal
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
             if (clearBuffer != null)
@@ -137,18 +134,11 @@ public class ComboManager : MonoBehaviour
         ComboInput input = new ComboInput { key = "Air", time = Time.time };
         SkillData airSkill = FindSkill("Air");
 
-        //Verificações de Falha
         if (airSkill == null)
         {
-            Debug.Log("Skill Fire não encontrada.");
+
             return;
         }
-
-        if (IsOnCoolDown("Fire", airSkill.coolDown))
-        {
-            Debug.Log("Fire ainda em cooldown.");
-        }
-
         //Logica principal
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
@@ -179,18 +169,10 @@ public class ComboManager : MonoBehaviour
         ComboInput input = new ComboInput { key = "Earth", time = Time.time };
         SkillData earthSkill = FindSkill("Earth");
 
-        //Verificações de Falha
         if (earthSkill == null)
         {
-            Debug.Log("Skill Fire não encontrada.");
             return;
         }
-
-        if (IsOnCoolDown("Fire", earthSkill.coolDown))
-        {
-            Debug.Log("Fire ainda em cooldown.");
-        }
-
         //Logica principal
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
@@ -218,12 +200,11 @@ public class ComboManager : MonoBehaviour
     }
     private void CastSimpleSkill(SkillData skill)
     {
-        Debug.Log("Disparando habilidade " + skill.key1);
         cooldownTracker[skill.key1] = Time.time;
         //Implementar lógica na semana 2
     }
     
-    private void CheckForCombo()
+    public void CheckForCombo()
     {
 
         if (inputBuffer.Count >= 2)
@@ -232,14 +213,15 @@ public class ComboManager : MonoBehaviour
             ComboInput input2 = inputBuffer[inputBuffer.Count - 2];
             if (input1.time - input2.time < comboWindow)
             {
-                //Debug.Log("Combo detectado: " + input2.key + " + " + input1.key);
-                Debug.Log(input1.time - input2.time);
-                Debug.Log(FindComboRecipe(inputBuffer[0].key, inputBuffer[1].key).name);
-                Instantiate(FindComboRecipe(inputBuffer[0].key, inputBuffer[1].key).comboEffectPrefab, MousePosition(), Quaternion.identity);
+                ComboData combo = FindComboRecipe(inputBuffer[0].key, inputBuffer[1].key);
+                if(combo.comboEffectPrefab != null)
+                {
+                    Instantiate(combo.comboEffectPrefab, MousePosition(), Quaternion.identity);
+                }
+                
             }
             else if (input1.time - input2.time > comboWindow)
             {
-                Debug.Log(input1.time - input2.time);
             }
             inputBuffer.Clear();
         }
@@ -248,7 +230,6 @@ public class ComboManager : MonoBehaviour
     {
         yield return new WaitForSeconds(comboWindow);
         inputBuffer.Clear();
-        Debug.Log("Buffer limpo por tempo");
     }
     private SkillData FindSkill(string key1)
     {
@@ -261,15 +242,17 @@ public class ComboManager : MonoBehaviour
         }
         return null;
     }
-    private ComboData FindComboRecipe(string key1, string key2)
+    public ComboData FindComboRecipe(string key1, string key2)
     {
-        foreach (var recipe in comboRecipes)
+        foreach (ComboData recipe in comboRecipes)
         {
             //para testar comutatividade, verifico ambas as condições
             bool match1 = (key1 == recipe.key1 && key2 == recipe.key2);
             bool match2 = (key1 == recipe.key2 && key2 == recipe.key1);
             if (match1 || match2)
             {
+                LastUsedComboName = recipe.name;
+                cooldownTracker[recipe.name] = Time.time;
                 return recipe;
             }
         }
@@ -288,10 +271,8 @@ public class ComboManager : MonoBehaviour
         {
             if (Time.time - cooldownTracker[skillName] < cooldownDuration)
             {
-                Debug.Log(skillName+" em CoolDown");
                 return true;
             }
-
         }
         return false;
     }
