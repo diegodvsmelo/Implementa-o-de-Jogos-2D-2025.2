@@ -7,24 +7,31 @@ using UnityEngine.Rendering;
 
 public class UiDebug : MonoBehaviour
 {
-    [Header("Variáveis visíveis na UI")]
+    [Header("ComboInfo")]
     public ComboManager comboManager;
     public GameObject debugUI;
     public bool isDebugUIActive;
 
     public TextMeshProUGUI comboText;
     public TextMeshProUGUI cooldownText;
+
+    [Header("PlayerStats")]
+    public GameObject player;
+    public TextMeshProUGUI currentHealthtxt;
+    public TextMeshProUGUI maxHealthtxt;
     void Update()
     {
-        UpdateComboText();
-        UpdateCooldownsText();
-        if(!isDebugUIActive)
+        
+        UpdatePlayerStats();
+        if (!isDebugUIActive)
         {
             debugUI.SetActive(false);
         }
         else
         {
             debugUI.SetActive(true);
+            UpdateComboText();
+            UpdateCooldownsText();
         }
     }
     void UpdateComboText()
@@ -49,7 +56,7 @@ public class UiDebug : MonoBehaviour
             if (recipe.name == comboName)
             {
                 foundRecipe = recipe;
-                break; 
+                break;
             }
         }
 
@@ -80,14 +87,14 @@ public class UiDebug : MonoBehaviour
 
     void UpdateCooldownsText()
     {
-        string cdString = "Cooldowns:\n"; 
+        string cdString = "Cooldowns:\n";
 
         var tracker = comboManager.CooldownTracker;
 
 
         foreach (SkillData skill in comboManager.skillRecipes)
         {
-            string skillName = skill.key1; 
+            string skillName = skill.key1;
             float duration = skill.coolDown;
 
             if (tracker.ContainsKey(skillName))
@@ -113,8 +120,18 @@ public class UiDebug : MonoBehaviour
                 cdString += skillName + ": Pronto\n";
             }
         }
-        
+
 
         cooldownText.text = cdString;
     }
+    void UpdatePlayerStats()
+    {
+        if(player !=null)
+        {
+            maxHealthtxt.text = "Max: "+player.GetComponent<PlayerHealth>().maxHealth.ToString();
+            currentHealthtxt.text = "Current: "+player.GetComponent<PlayerHealth>().currentHealthPlayer.ToString();
+        }
+        
+    }
+
 }

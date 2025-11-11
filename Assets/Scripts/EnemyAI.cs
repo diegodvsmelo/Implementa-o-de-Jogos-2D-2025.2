@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
     public Transform target;
     private Rigidbody2D rb;
     private Vector2 normalizedDirection;
+    public int damage = 10;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -58,5 +59,18 @@ public class EnemyAI : MonoBehaviour
     void OnDestroy()
     {
         EnemyManager.allEnemies.Remove(this);
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+       if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+        } 
     }
 }
