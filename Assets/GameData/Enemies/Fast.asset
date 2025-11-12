@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2872f0fe278870345806854131ddd7d6, type: 3}
+  m_Name: Fast
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  moveSpeed: 8
+  maxHealth: 50
+  damage: 5
+  exp: 15
+  enemyPrefab: {fileID: 835495513308341176, guid: 3b1e72103ac1261449d6c68020f99436, type: 3}

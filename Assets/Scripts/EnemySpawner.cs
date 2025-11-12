@@ -1,10 +1,12 @@
 using System.Collections;
-using Unity.Mathematics;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject enemyBasePrefab;
+    public List<EnemyData> enemyTypesToSpawn;
     public float coolDownSpawn;
     [SerializeField] private float spawnDistance = 15f;
     private Transform playerTransform;
@@ -18,9 +20,17 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
+            int index = Random.Range(0, enemyTypesToSpawn.Count);
+            EnemyData dataToSpawn = enemyTypesToSpawn[index];
+
             Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
             Vector2 spawnPosition = (Vector2)playerTransform.position + (randomDirection * spawnDistance);
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+
+
+            GameObject newEnemy = Instantiate(dataToSpawn.enemyPrefab, spawnPosition, Quaternion.identity);
+            newEnemy.GetComponent<EnemyAI>().Initialize(dataToSpawn);
+            newEnemy.GetComponent<EnemyHealth>().Initialize(dataToSpawn);
             yield return new WaitForSeconds(coolDownSpawn);
         }
 

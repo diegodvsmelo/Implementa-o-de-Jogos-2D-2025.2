@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float moveSpeed;
     public Transform target;
     private Rigidbody2D rb;
     private Vector2 normalizedDirection;
-    public int damage = 10;
+    public int damage;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public void Initialize(EnemyData data)
+    {
+        this.moveSpeed = data.moveSpeed;
+        this.damage = data.damage;
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
