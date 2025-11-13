@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Air
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   key1: Air
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 8718019864925799169, guid: bdb72eef1176c8a468dd33179261c661, type: 3}
   coolDown: 1
   behaviorType: 1

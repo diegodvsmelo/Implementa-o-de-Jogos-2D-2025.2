@@ -229,6 +229,7 @@ public class ComboManager : MonoBehaviour
                 break;
 
             case SkillBehaviorType.orbiting:
+                CastOrbiting(skill);
                 break;
 
             case SkillBehaviorType.groundArea:
@@ -263,11 +264,16 @@ public class ComboManager : MonoBehaviour
 
         //para que o projetil fique direcionado à posição do mouse
         float angle = Mathf.Atan2(directionNormalized.y, directionNormalized.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0f, 0f, angle -15f);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle - 15f);
 
         GameObject splash = Instantiate(skill.effectPrefab, spawnPosition, rotation);
         splash.transform.SetParent(this.transform);
     }
+    private void CastOrbiting(SkillData skill)
+    {
+        Instantiate(skill.effectPrefab, transform.position, quaternion.identity, this.transform);
+    }
+    
     public void CheckForCombo()
     {
 
