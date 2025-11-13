@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   key1: Earth
-  comboEffectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 0}
   coolDown: 5
+  behaviorType: 2

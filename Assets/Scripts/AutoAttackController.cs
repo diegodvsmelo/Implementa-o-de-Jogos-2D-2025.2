@@ -4,7 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class AutoAttackController : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private bool isShooting = true;

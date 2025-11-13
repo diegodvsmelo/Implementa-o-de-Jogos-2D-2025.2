@@ -68,6 +68,10 @@ public class ComboManager : MonoBehaviour
         {
             return;
         }
+        if (IsOnCoolDown(fireSkill.key1, fireSkill.coolDown))
+        {
+            return;
+        }
 
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
@@ -201,9 +205,41 @@ public class ComboManager : MonoBehaviour
     private void CastSimpleSkill(SkillData skill)
     {
         cooldownTracker[skill.key1] = Time.time;
-        //Implementar lógica na semana 2
+        switch (skill.behaviorType)
+        {
+            case SkillBehaviorType.projectile:
+                CastProjectile(skill);
+                break;
+            case SkillBehaviorType.aoe:
+                break;
+
+            case SkillBehaviorType.orbiting:
+                break;
+
+            case SkillBehaviorType.groundArea:
+                break;
+        }   
+            
+        if (skill.key1 == "Fire")
+        {
+            
+        }
     }
-    
+
+    private void CastProjectile(SkillData skill)
+    {
+        
+
+        Vector2 direction = (Vector2)MousePosition() - (Vector2)transform.position;
+        Vector2 directionNormalized = direction.normalized;
+
+        //para que o projetil fique direcionado à posição do mouse
+        float angle = Mathf.Atan2(directionNormalized.y, directionNormalized.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle+90f);
+
+        GameObject newProjectile = Instantiate(skill.effectPrefab, transform.position, rotation);
+        newProjectile.GetComponent<ProjectileMovement>().Setup(directionNormalized);
+    }
     public void CheckForCombo()
     {
 
