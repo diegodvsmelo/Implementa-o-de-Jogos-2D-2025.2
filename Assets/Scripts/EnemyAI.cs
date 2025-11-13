@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -7,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 normalizedDirection;
     public int damage;
-
+    private bool isKnockedBack = false;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public void Initialize(EnemyData data)
@@ -41,7 +42,28 @@ public class EnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (isKnockedBack)
+        {
+            return;
+        }
         rb.linearVelocity = normalizedDirection * moveSpeed;
+    }
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        if (isKnockedBack) return;
+
+        StartCoroutine(KnockbackStun(direction, force));
+    }
+
+    private IEnumerator KnockbackStun(Vector2 direction, float force)
+    {
+        isKnockedBack = true;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.2f);
+        isKnockedBack = false;
     }
 
     private void UpdateAnimator()

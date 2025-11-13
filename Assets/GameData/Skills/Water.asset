@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   key1: Water
-  effectPrefab: {fileID: 0}
-  coolDown: 3
+  effectPrefab: {fileID: 41421025288903831, guid: 8ebb8d84e247a834794a8a13a6a09b5e, type: 3}
+  coolDown: 5
   behaviorType: 3

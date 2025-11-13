@@ -20,6 +20,9 @@ public class ComboManager : MonoBehaviour
     public float comboWindow = 300f;
     private Coroutine clearBuffer;
 
+    [Header("Configurações das skills")]
+    public float waterSkillOffset = 1f;
+
     public struct ComboInput
     {
         public string key;
@@ -108,7 +111,10 @@ public class ComboManager : MonoBehaviour
         {
             return;
         }
-
+        if (IsOnCoolDown(waterSkill.key1, waterSkill.coolDown))
+        {
+            return;
+        }
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
             if (clearBuffer != null)
@@ -143,6 +149,10 @@ public class ComboManager : MonoBehaviour
 
             return;
         }
+        if (IsOnCoolDown(airSkill.key1, airSkill.coolDown))
+        {
+            return;
+        }
         //Logica principal
         if (inputBuffer.Count > 0 && (Time.time - inputBuffer[0].time < comboWindow))
         {
@@ -174,6 +184,10 @@ public class ComboManager : MonoBehaviour
         SkillData earthSkill = FindSkill("Earth");
 
         if (earthSkill == null)
+        {
+            return;
+        }
+        if (IsOnCoolDown(earthSkill.key1, earthSkill.coolDown))
         {
             return;
         }
@@ -211,6 +225,7 @@ public class ComboManager : MonoBehaviour
                 CastProjectile(skill);
                 break;
             case SkillBehaviorType.aoe:
+                CastAOE(skill);
                 break;
 
             case SkillBehaviorType.orbiting:
@@ -228,17 +243,30 @@ public class ComboManager : MonoBehaviour
 
     private void CastProjectile(SkillData skill)
     {
-        
+
 
         Vector2 direction = (Vector2)MousePosition() - (Vector2)transform.position;
         Vector2 directionNormalized = direction.normalized;
 
         //para que o projetil fique direcionado à posição do mouse
         float angle = Mathf.Atan2(directionNormalized.y, directionNormalized.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0f, 0f, angle+90f);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 90f);
 
         GameObject newProjectile = Instantiate(skill.effectPrefab, transform.position, rotation);
         newProjectile.GetComponent<ProjectileMovement>().Setup(directionNormalized);
+    }
+    private void CastAOE(SkillData skill)
+    {
+        Vector2 direction = (Vector2)MousePosition() - (Vector2)transform.position;
+        Vector2 directionNormalized = direction.normalized;
+        Vector2 spawnPosition = (Vector2)transform.position + (directionNormalized * waterSkillOffset);
+
+        //para que o projetil fique direcionado à posição do mouse
+        float angle = Mathf.Atan2(directionNormalized.y, directionNormalized.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle -15f);
+
+        GameObject splash = Instantiate(skill.effectPrefab, spawnPosition, rotation);
+        splash.transform.SetParent(this.transform);
     }
     public void CheckForCombo()
     {
