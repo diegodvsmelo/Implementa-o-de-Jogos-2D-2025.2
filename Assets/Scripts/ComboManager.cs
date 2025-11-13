@@ -233,13 +233,9 @@ public class ComboManager : MonoBehaviour
                 break;
 
             case SkillBehaviorType.groundArea:
+                CastGroundArea(skill);
                 break;
         }   
-            
-        if (skill.key1 == "Fire")
-        {
-            
-        }
     }
 
     private void CastProjectile(SkillData skill)
@@ -271,9 +267,12 @@ public class ComboManager : MonoBehaviour
     }
     private void CastOrbiting(SkillData skill)
     {
-        Instantiate(skill.effectPrefab, transform.position, quaternion.identity, this.transform);
+        Instantiate(skill.effectPrefab, transform.position, Quaternion.identity, this.transform);
     }
-    
+    private void CastGroundArea(SkillData skill)
+    {
+        Instantiate(skill.effectPrefab, (Vector2)MousePosition(), Quaternion.identity);
+    }
     public void CheckForCombo()
     {
 
