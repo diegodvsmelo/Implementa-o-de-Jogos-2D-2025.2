@@ -7,6 +7,11 @@ using UnityEngine.Rendering;
 
 public class UiDebug : MonoBehaviour
 {
+    [Header("WaveInfo")]
+    public TextMeshProUGUI leveltxt;
+    public TextMeshProUGUI statMultitxt;
+    public TextMeshProUGUI cdMultitxt;
+
     [Header("ComboInfo")]
     public ComboManager comboManager;
     public GameObject debugUI;
@@ -32,6 +37,7 @@ public class UiDebug : MonoBehaviour
             debugUI.SetActive(true);
             UpdateComboText();
             UpdateCooldownsText();
+            UpdateWaveInfo();
         }
     }
     void UpdateComboText()
@@ -133,5 +139,11 @@ public class UiDebug : MonoBehaviour
         }
         
     }
-
+    void UpdateWaveInfo()
+    {
+        EnemySpawner enemySpawner = GameObject.FindWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+        leveltxt.text = "Wave: "+ enemySpawner.WaveLevelUI;
+        statMultitxt.text = "Stat Multiplier: "+ enemySpawner.StatMultiplierUI;
+        cdMultitxt.text = "CooldownMulti: "+ enemySpawner.CooldownMultiplierUI;
+    }
 }

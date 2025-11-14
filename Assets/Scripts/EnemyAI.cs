@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float moveSpeed;
+    [Header("Status")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private int damage;
+    [SerializeField] private int exp;
     public Transform target;
     private Rigidbody2D rb;
     private Vector2 normalizedDirection;
-    public int damage;
     private bool isKnockedBack = false;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    public void Initialize(EnemyData data)
+    public void Initialize(EnemyData data, float statMultiplier)
     {
-        this.moveSpeed = data.moveSpeed;
-        this.damage = data.damage;
+        this.moveSpeed = data.moveSpeed* statMultiplier;
+        this.damage = (int)(data.damage*statMultiplier);
+        this.exp = (int)(data.exp*statMultiplier);
     }
     void Awake()
     {

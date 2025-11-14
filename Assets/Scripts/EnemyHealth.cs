@@ -1,12 +1,13 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth;
     [SerializeField] private int currentHealth;
-    public void Initialize(EnemyData data)
+    public void Initialize(EnemyData data, float statMultiplier)
     {
-        this.maxHealth = data.maxHealth;
+        this.maxHealth = (int)(data.maxHealth*statMultiplier);
         currentHealth = maxHealth;
     }
     void Start()
