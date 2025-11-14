@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2455287069041890485, guid: 06b63a1840dc77e44a1002fe01633c21, type: 3}
   m_Color: {r: 0.86522907, g: 0, b: 0.1595871, a: 1}
   m_FlipX: 0
@@ -205,7 +205,6 @@ MonoBehaviour:
   moveSpeed: 4
   target: {fileID: 0}
   damage: 10
-  enemyPrefab: {fileID: 7675682902948303098}
 --- !u!114 &6117419437270446230
 MonoBehaviour:
   m_ObjectHideFlags: 0

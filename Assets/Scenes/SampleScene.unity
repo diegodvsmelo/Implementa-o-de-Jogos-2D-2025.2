@@ -580,7 +580,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 778136270091268006, guid: 5f08a668082eacf41bd3190beadefaab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2499,7 +2499,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 265ad3a49668ea349b5cb301a0d3ee7d, type: 2}
   - {fileID: 11400000, guid: f82775493a24ccd44b1e4c1b62e1a7fb, type: 2}
   - {fileID: 11400000, guid: 6cd5c8c59bae35e48a9cb4a5c7b03de2, type: 2}
-  coolDownSpawn: 1.5
+  coolDownSpawn: 1
   spawnDistance: 12
 --- !u!4 &1446545366
 Transform:
@@ -2897,7 +2897,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 50b14bd3bb4f87941938f0b9cdfab699, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2918,7 +2918,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
