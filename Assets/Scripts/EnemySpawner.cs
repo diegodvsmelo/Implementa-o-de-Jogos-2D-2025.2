@@ -76,7 +76,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                     currentWaveIndex++;
                     currentWave = nextWave;
-                    Debug.Log("Iniciando nova wave: "+currentWave.name);
                 }
             }
             //Verifica se está na ultima wave, para poder começar a lógica de multiplicadores ''Endgame''
@@ -97,7 +96,6 @@ public class EnemySpawner : MonoBehaviour
                     currentCooldownMultiplier*=endgameCooldownMultiplier;
 
                     nextEndgameTickTime+=endgameScalingFrequency;
-                    Debug.Log("ENDGAME: Dificuldade aumentada! Stats x" + currentStatMultiplier);
                 }
             }
 

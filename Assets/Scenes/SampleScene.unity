@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 506964555}
   - component: {fileID: 506964556}
   - component: {fileID: 506964557}
+  - component: {fileID: 506964558}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -895,6 +896,22 @@ MonoBehaviour:
   maxHealth: 999999
   currentHealth: 0
   gameOverScreen: {fileID: 1916308842}
+--- !u!114 &506964558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506964548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9393df1006e133647aa9938af3546f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerExp
+  xpToLevelUp: 100
+  currentXp: 0
+  level: 1
+  xpMultiplierIncrease: 1.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
