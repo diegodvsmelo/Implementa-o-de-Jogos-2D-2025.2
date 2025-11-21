@@ -39,4 +39,9 @@ public class PlayerStats : MonoBehaviour
         globalDamageMultiplier += percentage;
         Debug.Log("Dano Multiplicado! Novo: " + globalDamageMultiplier);
     }
+    public void UpgradeCooldown(float percentage)
+    {
+        cooldownReductionMultiplier -= percentage;
+        Debug.Log("Dano Multiplicado! Novo: " + cooldownReductionMultiplier);
+    }
 }
