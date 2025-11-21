@@ -7,6 +7,7 @@ public class PlayerExp : MonoBehaviour
     public float currentXp;
     public int level;
     public float xpMultiplierIncrease;
+    public UpgradeManager upgradeManager;
 
     void Awake()
     {
@@ -31,6 +32,6 @@ public class PlayerExp : MonoBehaviour
 
     public void HandleLevelUp()
     {
-        //Ativar GameObject da Tela de Level up e setar Time.timescale = 0 (lembrando de quando escolher o upgrade setar ele de volta pra 1)
+        if(upgradeManager!=null) upgradeManager.OpenUpgradeMenu();
     }
 }

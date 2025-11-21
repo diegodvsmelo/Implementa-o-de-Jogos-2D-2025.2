@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class ComboManager : MonoBehaviour
 {
-    //APENAS COMBO Q+Q(FIRE+FIRE) ESTÁ ''IMPLEMENTADO'' FAZER COMBO COM QUALQUER OUTRA TECLA GERA ERRO DE FALTA DE INDEX NA LISTA
+    private PlayerStats stats;
     private InputActions controls;
     private Vector2 worldPosition;
 
@@ -33,6 +33,7 @@ public class ComboManager : MonoBehaviour
         cooldownTracker = new Dictionary<string, float>();
         controls = new InputActions();
         inputBuffer = new List<ComboInput>();
+        stats = GetComponent<PlayerStats>();
     }
     void OnEnable()
     {
@@ -250,7 +251,9 @@ public class ComboManager : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 90f);
 
         GameObject newProjectile = Instantiate(skill.effectPrefab, transform.position, rotation);
-        newProjectile.GetComponent<ProjectileMovement>().Setup(directionNormalized);
+        var projectileScript = newProjectile.GetComponent<ProjectileMovement>();
+        projectileScript.Setup(directionNormalized);
+        projectileScript.damage = Mathf.RoundToInt(projectileScript.damage*stats.globalDamageMultiplier);
     }
     private void CastAOE(SkillData skill)
     {

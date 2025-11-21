@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerStats stats;
     private Animator animator;
-    public float speed;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private InputActions controls;
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        stats = GetComponent<PlayerStats>();
         
         targetPosition = transform.position;
     }
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = normalizedDirection * speed;
+        rb.linearVelocity = normalizedDirection * stats.moveSpeed;
         //rb.linearVelocity = new Vector2(moveInput.x * speed * Time.deltaTime, moveInput.y * speed * Time.deltaTime);
     }
 
